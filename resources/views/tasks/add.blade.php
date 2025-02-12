@@ -10,14 +10,23 @@
             @csrf
             <div class="mb-3">
                 <input type="text" name="title" class="form-control" value="{{ $task->title ?? '' }}" placeholder="Task Title">
+                @error("title")
+                 <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
             <div class="mb-3">
                 <input type="datetime-local" class="form-control" id="deadline" name="deadline" 
                        value="{{ isset($task) ? date('Y-m-d\TH:i', strtotime($task->deadline)) : '' }}">
-                <small class="form-text text-muted text-end d-block">Please select a deadline (e.g., 2025-12-31 23:59)</small>
+                <small class="form-text text-muted text-end d-block">Select a deadline (e.g., 2025-12-31 23:59)</small>
+                @error("deadline")
+                 <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
             <div class="mb-3">
                 <textarea name="description" style="resize: none" class="form-control" rows="3" placeholder="Task Description">{{ $task->description ?? '' }}</textarea>
+                @error("description")
+                 <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
             @if (session()->has("success"))
                 <div class="alert alert-success">
