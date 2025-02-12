@@ -14,6 +14,7 @@
       </div>
   @endif
   <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <div class="m-3 text-center fs-4 fw-semibold">Welcome {{ auth()->user()->name }}</div>
     <h4 class="border-bottom pb-2 mb-0">Tasks</h4>
     @foreach ($tasks as $task )
     <div class="d-flex text-body-secondary pt-3">
